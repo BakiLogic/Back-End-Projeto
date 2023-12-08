@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
-const db = require('../db/connection')
+const db = require('../db/db')
 
-const User = db.define('user', {
+const Receita = db.define('receita', {
     id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -9,14 +9,17 @@ const User = db.define('user', {
         unique: true,
         autoIncrement: true,
     },
-    login: {
+    nome: {
         type: Sequelize.STRING,
         unique: true,
     },
-    senha: {
-        type: Sequelize.STRING,
+    tdp: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-    }
+    },
+
     
 })
-module.exports = User
+Receita.hasMany(Ingrediente, {foreignKey: 'idReceita'})
+
+module.exports = Receita
