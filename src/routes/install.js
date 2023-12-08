@@ -31,3 +31,5 @@ router.get('/install', async (req, res) => {
     res.json({msg:"Sucesso ao inicializar os dados"})
 
 })
+
+module.exports = router
