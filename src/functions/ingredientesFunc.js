@@ -5,8 +5,8 @@ const {exceptions} = require('./functions/exceptions')
 module.exports = {
     set: async (info) => {
         if (valueException(info).status) {
-            const newIng = await Ingrediente.create(dados)
-            return {result: true, Ingrediente: newIng}
+                await Ingrediente.create(info)
+            return true
         } else {
             return false
         }
@@ -22,7 +22,7 @@ module.exports = {
     },
 
     searchName: async (nome) => {
-        const answ = await Ingrediente.findOne({where: {nome: nome}})
+        const answ = await Ingrediente.findOne({where: {nome: nome.toLowerCase()}})
         if (answ) {
             return {result: true, ingrediente: answ}
         } else {
@@ -40,7 +40,7 @@ module.exports = {
     },
     editPerName: async (nome, newIng) => {
         if (valueException(newIng)) {
-            await Ingrediente.update(newIng, {where: {nome: nome}})
+            await Ingrediente.update(newIng, {where: {nome: nome.toLowerCase()}})
             return true
         } else {
             return false
@@ -53,7 +53,7 @@ module.exports = {
     },
  
     deletePerName: async (nome) => {
-        await Ingrediente.destroy({where: { nome: nome}})
+        await Ingrediente.destroy({where: { nome: nome.toLowerCase()}})
         return true
     },
 
