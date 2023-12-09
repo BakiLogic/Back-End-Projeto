@@ -4,11 +4,16 @@ const {exceptions} = require('./functions/exceptions')
 
 module.exports = {
     set: async (info) => {
+        const answ = await Receita.findOne({where: {nome: info.nome}})
+        if (answ){
+            return false
+        } else {
         if (valueException(info).status) {
                 await Receita.create(info)
             return true
         } else {
             return false
+        }
         }
     },
 

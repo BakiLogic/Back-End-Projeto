@@ -4,11 +4,16 @@ const {exceptions} = require('./functions/exceptions')
 
 module.exports = {
     set: async (info) => {
+        const answ = await Ingrediente.findOne({where: {nome: info.nome}})
+        if (answ){
+            return false
+        } else {
         if (valueException(info).status) {
                 await Ingrediente.create(info)
             return true
         } else {
             return false
+        }
         }
     },
 
