@@ -8,6 +8,7 @@ app.use(bodyParser.json())
 const db = require('./db/connection')
 
 app.use('/', require('./routes/login'))
+app.use('/', require('./routes/install'))
 
 db.authenticate().then(() => {
     console.log("1")

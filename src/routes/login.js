@@ -12,11 +12,11 @@ router.post('/login', async (req, res) => {
         if(user.senha = senha){
             if(user.tipo = 1){
                 let payload = { id: user.id,  admin:true }
-                let jwtoken = jwt.sign(payload, 'SHHHHH', { expiresIn: '24H' })
+                let jwtoken = jwt.sign(payload, 'SHHHHH', { expiresIn: '24h' })
                 res.json({ logged: true, mensagem: 'Login de Admin bem sucedido!', token: jwtoken })
             } else {
                 let payload = { id: user.id,  admin:false }
-                let jwtoken = jwt.sign(payload, 'SHHHHH', { expiresIn: '24H' })
+                let jwtoken = jwt.sign(payload, 'SHHHHH', { expiresIn: '24h' })
                 res.json({ logged: true, mensagem: 'Login de usuário bem sucedido!', token: jwtoken })
             }
 

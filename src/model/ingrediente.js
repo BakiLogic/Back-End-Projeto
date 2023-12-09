@@ -20,5 +20,5 @@ const Ingrediente = db.define('ingrediente', {
     },
     
 })
-Ingrediente.hasMany(Receita, {foreignKey: 'idIngrediente'})
+Ingrediente.belongsToMany(Receita, {foreignKey: 'idIngrediente'})
 module.exports = Ingrediente
