@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db/db')
+const Receita = require('../model/receita') 
 
 
 const Ingrediente = db.define('ingrediente', {
@@ -18,6 +19,7 @@ const Ingrediente = db.define('ingrediente', {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
+    
     
 })
 Ingrediente.belongsToMany(Receita, {foreignKey: 'idIngrediente'})

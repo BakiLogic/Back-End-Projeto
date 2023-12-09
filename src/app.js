@@ -5,16 +5,11 @@ const bodyParser = require('body-parser')
 
 app.use(bodyParser.json())
 
-const db = require('./db/connection')
+const db = require('./db/db')
 
 app.use('/', require('./routes/login'))
 app.use('/', require('./routes/install'))
 
-db.authenticate().then(() => {
-    console.log("1")
-}).catch(err => {
-    console.log("0", err)
-})
 
 port = process.env.PORT
 

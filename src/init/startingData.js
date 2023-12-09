@@ -32,50 +32,50 @@ const users = [
 
 const ingredientes = [
     {
-        nome: Cenoura,
-        volume: 100,
+        nome: "Cenoura",
+        volume: 100
 
     },
 
     {
-        nome: Frango,
+        nome: "Frango",
         volume: 2000
     },
 
     {
-        nome: Tomate,
+        nome: "Tomate",
         volume: 100
     },
 
     {
-        nome: Feijao,
+        nome: "Feijao",
         volume: 250
     },
 
     {
-        nome: Arroz,
+        nome: "Arroz",
         volume: 500
     },
 
     {
-        nome: Sal,
+        nome: "Sal",
         volume: 10
     },
 
     {
-        nome: Chumbinho,
+        nome: "Chumbinho",
         volume: 15
     },
 
     {
-        nome: Leite,
+        nome: "Leite",
         volume: 200
     },
 
     {
-        nome: Farinha,
+        nome: "Farinha",
         volume: 300
-    },
+    }
 ]
 
 
@@ -85,59 +85,41 @@ const receitas = [
     {
         nome: "Frango Assado",
         tdp: 180,
-        idIngrediente: [1, 2, 3]
+        idIngrediente: [1, 2, 3],
+        categoria: "Almoco"
         
     },
 
     {   
         nome: "Marmita",
         tdp: 75,
-        idIngrediente: [2, 3, 4, 5]
+        idIngrediente: [2, 3, 4, 5],
+        categoria: "Refeicao"
     },
 
     {
         nome: "Salada",
         tdp: 10,
-        idIngrediente: [1, 3, 6]
+        idIngrediente: [1, 3, 6],
+        categoria: "Acompanhamento"
     },
 
     {
         nome: "Veneno de Rato",
         tdp: 5,
-        idIngrediente: [6, 7]
+        idIngrediente: [6, 7],
+        categoria: "Outros"
     },
 
     {
         nome: "Feijoada",
         tdp: 240,
-        idIngrediente: [4, 6, 9]
+        idIngrediente: [4, 6, 9],
+        categoria: "Almoco"
     }
 
 ]
 
-const categorias = [
-    {
-       nome: lanche,
-       idReceita: 1
-    },
-    {
-       nome: almoco,
-       idReceita: 5
-    },
-    {
-       nome: refeicao,
-       idReceita: 2
-    },
-    {
-       nome: doce,
-       idReceita: 3
-    },
-    {
-       nome: outros,
-       idReceita: 4
-    }
-
-]
 
 
 
@@ -148,6 +130,6 @@ const categorias = [
 module.exports = {
     users,
     receitas,
-    ingredientes,
-    categorias
+    ingredientes
+
 }

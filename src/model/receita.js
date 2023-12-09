@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db/db')
+const Ingrediente = require('../model/ingrediente')
 
 const Receita = db.define('receita', {
     id: {
@@ -17,9 +18,12 @@ const Receita = db.define('receita', {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
-
-    
+    categoria: {
+        type: Sequelize.STRING,
+        unique: true
+    }
 })
+
 Receita.hasMany(Ingrediente, {foreignKey: 'idReceita'})
 
 module.exports = Receita
