@@ -17,7 +17,7 @@ db.authenticate().then(() => {
 app.use('/', require('./routes/login'))
 app.use('/', require('./routes/install'))
 
-router.put('/', (req, res)=> {
+router.get('/', (req, res)=> {
     res.render("README \n\n Projeto com foco em cadastro e manejamento de dados perante ao conceito de receitas e ingredientes culinários, com a capacidade de criar um menu com tempo de preparo e ingredientes")
 
 
