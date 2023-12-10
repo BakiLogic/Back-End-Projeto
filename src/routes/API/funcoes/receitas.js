@@ -3,8 +3,9 @@ const router = express.Router()
 const jwt = require('jsonwebtoken')
 
 const Receita = require('../../../functions/receitasFunc')
-const checkLogged = require('../middleware/checkLog').checkLogged
-const checkAdmin = require('../middleware/checkLog').checkAdmin
+const {checkLogged} = require('../middleware/checkLog')
+const {checkAdmin} = require('../middleware/checkLog')
+
 
 router.post('/receita/adicionar', checkLogged, async (req, res) => {
    
@@ -60,7 +61,7 @@ router.delete('receita/removePerName/:nome', checkAdmin, async (req, res) => {
 
 })
 
-router.get('receita/searchPerId/:id', async (req, res) => {
+router.get('receita/searchPerId/:id',checkLogged, async (req, res) => {
     
         const check = await Receita.buscarPorId(req.params.id)
 
@@ -72,7 +73,7 @@ router.get('receita/searchPerId/:id', async (req, res) => {
     
 })
 
-router.get('receita/searchPerName/:nome', async (req, res) => {
+router.get('receita/searchPerName/:nome',checkLogged, async (req, res) => {
     
         const check = await Receita.buscarPorNome(req.params.nome)
 
@@ -84,7 +85,7 @@ router.get('receita/searchPerName/:nome', async (req, res) => {
         } 
 })
 
-router.get('receita/listPerCategoria/:cat', async (req, res) => {
+router.get('receita/listPerCategoria/:cat',checkLogged, async (req, res) => {
     
     const check = await Receita.listCat(req.params.cat)
 
@@ -96,7 +97,7 @@ router.get('receita/listPerCategoria/:cat', async (req, res) => {
     } 
 })
 
-router.get('receita/list/:qtt/:pagina', async (req, res) => {
+router.get('receita/list/:qtt/:pagina',checkLogged, async (req, res) => {
  
         let {qtt, pagina} = req.params
 

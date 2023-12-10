@@ -29,4 +29,4 @@ let checkAdmin = (req, res) => {
     })
 }
 
-module.exports = checkLogged, checkAdmin
+module.exports = {checkLogged, checkAdmin}

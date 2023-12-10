@@ -3,8 +3,10 @@ const router = express.Router()
 const jwt = require('jsonwebtoken')
 
 const Ingrediente = require('../../../functions/igFunc')
-const checkLogged = require('../middleware/checkLog').checkLogged
-const checkAdmin = require('../middleware/checkLog').checkAdmin
+const {checkLogged} = require('../middleware/checkLog')
+const {checkAdmin} = require('../middleware/checkLog')
+
+
 
 router.post('/ingrediente/adicionar', checkLogged, async (req, res) => {
    
@@ -60,7 +62,7 @@ router.delete('ingrediente/removePerName/:nome', checkAdmin, async (req, res) =>
 
 })
 
-router.get('ingrediente/searchPerId/:id', async (req, res) => {
+router.get('ingrediente/searchPerId/:id', checkLogged, async (req, res) => {
     
         const check = await Ingrediente.buscarPorId(req.params.id)
 
@@ -72,7 +74,7 @@ router.get('ingrediente/searchPerId/:id', async (req, res) => {
     
 })
 
-router.get('ingrediente/searchPerName/:nome', async (req, res) => {
+router.get('ingrediente/searchPerName/:nome',checkLogged, async (req, res) => {
     
         const check = await Ingrediente.buscarPorNome(req.params.nome)
 
@@ -84,7 +86,7 @@ router.get('ingrediente/searchPerName/:nome', async (req, res) => {
         } 
 })
 
-router.get('ingrediente/list/:qtt/:pagina', async (req, res) => {
+router.get('ingrediente/list/:qtt/:pagina',checkLogged, async (req, res) => {
  
         let {qtt, pagina} = req.params
 
