@@ -73,6 +73,16 @@ module.exports = {
         } else {
             return false
         }
+    },
+
+    listPerCategoria: async(cat) =>{
+        const check = await Receita.findAll({offset: pagina, limit: limite})
+        if (check){
+            return {result: true,check}
+        } else {
+                return false
+            }
+        
     }
 
 }

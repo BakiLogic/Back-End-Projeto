@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db/db')
-const Ingrediente = require('../ingrediente')
+const Ingrediente = require('../model/ingrediente')
 
 const Receita = db.define('receita', {
     id: {
