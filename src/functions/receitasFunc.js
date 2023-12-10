@@ -1,6 +1,6 @@
 const Receita = require('../model/receita')
-const perPageException = require('./functions/exceptions').perPageException
-const valueException = require('./functions/exceptions').valueException
+const perPageException = require('./exceptions').perPageException
+const valueException = require('./exceptions').valueException
 
 
 module.exports = {

@@ -16,10 +16,11 @@ db.authenticate().then(() => {
 
 app.use('/', require('./routes/login'))
 app.use('/', require('./routes/install'))
-app.use('/', require('./routes/system/funcoes/ingredientes'))
-app.use('/', require('./routes/system/funcoes/receitas'))
-app.use('/', require('./routes/system/admin/admins'))
-app.use('/', require('./routes/system/admin/users'))
+app.use('/', require('./routes/API/funcoes/ingredientes'))
+app.use('/', require('./routes/API/funcoes/receitas'))
+app.use('/', require('./routes/API/admin/admins'))
+app.use('/', require('./routes/API/admin/users'))
+
 
 app.get('/', function (req, res) {
     res.send("README \n\n Projeto com foco em cadastro e manejamento de dados perante ao conceito de receitas e ingredientes culinários, com a capacidade de criar um menu com tempo de preparo e ingredientes");

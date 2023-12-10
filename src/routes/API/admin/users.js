@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
 
-const User = require('../opcoes/userFunc')
+const User = require('../../../functions/userFunc')
 const checkAdmin = require('../middleware/checkLog').checkAdmin
 
 router.post('/user/adicionar', checkAdmin, async (req, res) => {
