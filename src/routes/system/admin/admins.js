@@ -7,7 +7,7 @@ const checkAdmin = require('../middleware/checkLog').checkAdmin
 
 router.post('/admin/adicionar', checkAdmin, async (req, res) => {
    
-        const checkUser = await User.set(req.body)
+        const checkUser = await User.setNovo(req.body)
 
         if (checkUser) {
             res.json({answer: "Admin adicionado"})

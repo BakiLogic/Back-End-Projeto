@@ -2,13 +2,13 @@ const express = require('express')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
 
-const Ingrediente = require('../functions/igFunc')
+const Ingrediente = require('./igFunc')
 const checkLogged = require('../middleware/checkLog').checkLogged
 const checkAdmin = require('../middleware/checkLog').checkAdmin
 
 router.post('/ingrediente/adicionar', checkLogged, async (req, res) => {
    
-        const checkIngrediente = await Ingrediente.set(req.body)
+        const checkIngrediente = await Ingrediente.setNovo(req.body)
 
         if (checkIngrediente) {
             res.json({answer: "Ingrediente adicionado"})

@@ -2,13 +2,13 @@ const express = require('express')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
 
-const Receita = require('../functions/receitasFunc')
+const Receita = require('./receitasFunc')
 const checkLogged = require('../middleware/checkLog').checkLogged
 const checkAdmin = require('../middleware/checkLog').checkAdmin
 
 router.post('/receita/adicionar', checkLogged, async (req, res) => {
    
-        const checkReceita = await Receita.set(req.body)
+        const checkReceita = await Receita.setNovo(req.body)
 
         if (checkReceita) {
             res.json({answer: "Receita adicionado"})

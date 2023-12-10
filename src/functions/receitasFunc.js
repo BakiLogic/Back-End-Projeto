@@ -4,7 +4,7 @@ const valueException = require('./functions/exceptions').valueException
 
 
 module.exports = {
-    set: async (info) => {
+    setNovo: async (info) => {
         const answ = await Receita.findOne({where: {nome: info.nome}})
         if (answ){
             return false
