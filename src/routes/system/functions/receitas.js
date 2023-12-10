@@ -1,0 +1,111 @@
+const express = require('express')
+const router = express.Router()
+const jwt = require('jsonwebtoken')
+
+const Receita = require('../functions/receitasFunc')
+const checkLogged = require('../middleware/checkLog')
+
+router.post('/receita/adicionar', checkLogged, async (req, res) => {
+   
+        const checkReceita = await Receita.set(req.body)
+
+        if (checkReceita) {
+            res.json({answer: "Receita adicionado"})
+        } else {
+            res.json({answer: "Erro ao adicionar receita"})
+        }
+    
+})
+
+router.put('receita/editPerId/:id', checkAdmin, async (req, res) => {
+    const check = await Receita.editPerName(req.params.id)
+    if (check) {
+        res.json({answer: "Receita editado"})
+    } else {
+        res.json({answer: "Falha ao editar"})
+    }
+
+})
+
+router.put('ingrediente/editPerName/:nome', checkAdmin, async (req, res) => {
+    const check = await Receita.editPerName(req.params.nome)
+    if (check) {
+        res.json({answer: "Receita editado"})
+    } else {
+        res.json({answer: "Falha ao editar"})
+    }
+
+})
+
+router.delete('receita/removePerId/:id', checkAdmin, async (req, res) => {
+    const check = await Receita.deletePerId(req.params.id)
+
+    if (check) {
+        res.json({answer: "Receita excluido"})
+    } else {
+        res.json({answer: "Falha ao excluir"})
+    }    
+ 
+})
+router.delete('receita/removePerName/:nome', checkAdmin, async (req, res) => {
+
+    const check = await Receita.deletePerName(req.params.nome)
+
+    if (check) {
+        res.json({answer: "Receita excluido"})
+    } else {
+        res.json({answer: "Falha ao excluir"})
+    }   
+
+})
+
+router.get('receita/searchPerId/:id', async (req, res) => {
+    
+        const check = await Receita.buscarPorId(req.params.id)
+
+        if (check) {
+            res.json({check})
+        } else {
+        res.json({msg: "não encontrado"})
+        } 
+    
+})
+
+router.get('receita/searchPerName/:nome', async (req, res) => {
+    
+        const check = await Receita.buscarPorNome(req.params.nome)
+
+       
+        if (check) {
+            res.json({check})
+        } else {
+            res.json({msg: "não encontrado"})
+        } 
+})
+
+router.get('receita/listPerCategoria/:cat', async (req, res) => {
+    
+    const check = await Receita.listCat(req.params.cat)
+
+   
+    if (check) {
+        res.json({check})
+    } else {
+        res.json({msg: "não encontrado"})
+    } 
+})
+
+router.get('receita/list/:qtt/:pagina', async (req, res) => {
+ 
+        let {qtt, pagina} = req.params
+
+        const lista = await Receita.listLimited(qtt, pagina)
+
+        if (lista) {
+            res.json(lista)
+        } else {
+            res.json(lista)
+        }
+})
+
+module.exports = router;
