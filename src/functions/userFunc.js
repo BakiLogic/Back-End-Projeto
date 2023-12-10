@@ -1,15 +1,15 @@
-const Receita = require('../model/receita')
+const User = require('../model/receita')
 const {exceptions} = require('./functions/exceptions')
 
 
 module.exports = {
     set: async (info) => {
-        const answ = await Receita.findOne({where: {nome: info.nome}})
+        const answ = await User.findOne({where: {nome: info.nome}})
         if (answ){
             return false
         } else {
         if (valueException(info)) {
-                await Receita.create(info)
+                await User.create(info)
             return true
         } else {
             return false
@@ -17,13 +17,13 @@ module.exports = {
         }
     },
     setAdm: async (info) =>{
-        const answ = await Receita.findOne({where: {nome: info.nome}})
+        const answ = await User.findOne({where: {nome: info.nome}})
         if (answ){
             return false
         } else {
             if (info.tipo != 1){
                 if (valueException(info)) {
-                    await Receita.create(info)
+                    await User.create(info)
                 return true
                 } else {
                     return false
@@ -34,9 +34,9 @@ module.exports = {
     },
 
     searchId: async (id) => {
-        const answ = await Receita.findOne({where: {id: id}})
+        const answ = await User.findOne({where: {id: id}})
         if (answ) {
-            return {result: true, receita: answ}
+            return {result: true, user: answ}
         } else {
             return false
         }   
@@ -54,9 +54,22 @@ module.exports = {
 
 
     deletePerId: async (id) => {
-        await Receita.destroy({where: { id: id }})
+        await User.destroy({where: { id: id }})
         return true
     },
+
+    listlimited: async(qtt, pagina) => {
+        qtt = parseInt(qtt)
+        pagina = (pagina - 1) * 5
+
+        if (perPageException(qtt, pagina)) {
+            const check = await User.findAll({offset: pagina, limit: limite})
+    
+            return {result: true,check}
+        } else {
+            return false
+        }
+    }
  
 
 }

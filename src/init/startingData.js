@@ -33,48 +33,62 @@ const users = [
 const ingredientes = [
     {
         nome: "Cenoura",
-        volume: 100
+        volume: 100,
+        idReceita: 1
 
     },
 
     {
         nome: "Frango",
-        volume: 2000
+        volume: 2000,
+        idReceita: 1
     },
 
     {
         nome: "Tomate",
-        volume: 100
+        volume: 100,
+        idReceita: 3
     },
 
     {
         nome: "Feijao",
-        volume: 250
+        volume: 250,
+        idReceita: 5
     },
 
     {
         nome: "Arroz",
-        volume: 500
+        volume: 500,
+        idReceita: 2
     },
 
     {
         nome: "Sal",
-        volume: 10
+        volume: 10,
+        idReceita: 5
     },
 
     {
         nome: "Chumbinho",
-        volume: 15
+        volume: 15,
+        idReceita: 4
     },
 
     {
         nome: "Leite",
-        volume: 200
+        volume: 200,
+        idReceita: 4
     },
 
     {
         nome: "Farinha",
-        volume: 300
+        volume: 300,
+        idReceita: 5
+    },
+    {
+        nome: "Alface",
+        volume:20,
+        idReceita: 3
     }
 ]
 
@@ -85,7 +99,6 @@ const receitas = [
     {
         nome: "Frango Assado",
         tdp: 180,
-        idIngrediente: [1, 2, 3],
         categoria: "Almoco"
         
     },
@@ -93,29 +106,25 @@ const receitas = [
     {   
         nome: "Marmita",
         tdp: 75,
-        idIngrediente: [2, 3, 4, 5],
         categoria: "Refeicao"
     },
 
     {
         nome: "Salada",
         tdp: 10,
-        idIngrediente: [1, 3, 6],
         categoria: "Acompanhamento"
     },
 
     {
         nome: "Veneno de Rato",
         tdp: 5,
-        idIngrediente: [6, 7],
         categoria: "Outros"
     },
 
     {
         nome: "Feijoada",
         tdp: 240,
-        idIngrediente: [4, 6, 9],
-        categoria: "Almoco"
+        categoria: "prato"
     }
 
 ]

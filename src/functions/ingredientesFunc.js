@@ -62,5 +62,19 @@ module.exports = {
         return true
     },
 
+    listlimited: async(qtt, pagina) => {
+        qtt = parseInt(qtt)
+        pagina = (pagina - 1) * 5
+
+        if (perPageException(qtt, pagina)) {
+            const check = await Ingrediente.findAll({offset: pagina, limit: limite})
+    
+            return {yesno: true,check}
+        } else {
+            return false
+        }
+    }
+    
+
 }
 
