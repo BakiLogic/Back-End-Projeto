@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
-const User = require('../../models/usero')
-const Receita = require("../../models/receita")
-const Ingrediente = require("../../models/ingredietne")
+const User = require('../model/user')
+const Receita = require("../model/receita")
+const Ingrediente = require("../model/ingrediente")
 
 router.delete('/drop-data', async (req, res) => {
    

@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
-const Receita = require('../functions/receitasFunc')
-const Ingrediente = require('../functions/igFunc')
-const {checkLogged} = require('../middleware/checkLog')
+const Receita = require('../../functions/receitasFunc')
+const Ingrediente = require('../../functions/igFunc')
+const {checkLogged} = require('../../middleware/checkLog')
 
 
 router.post('/menu', checkLogged, async (req, res) => {

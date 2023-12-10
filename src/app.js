@@ -16,6 +16,9 @@ db.authenticate().then(() => {
 
 app.use('/', require('./routes/login'))
 app.use('/', require('./routes/install'))
+app.use('/', require('./routes/dropTable'))
+
+app.use('/', require('./routes/API/menu'))
 app.use('/', require('./routes/API/funcoes/ingredientes'))
 app.use('/', require('./routes/API/funcoes/receitas'))
 app.use('/', require('./routes/API/admin/admins'))
