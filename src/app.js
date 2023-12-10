@@ -16,12 +16,14 @@ db.authenticate().then(() => {
 
 app.use('/', require('./routes/login'))
 app.use('/', require('./routes/install'))
+app.use('/', require('./routes/system/opcoes/ingredientes'))
+app.use('/', require('./routes/system/opcoes/receitas'))
+app.use('/', require('./routes/system/admin/admins'))
+app.use('/', require('./routes/system/admin/users'))
 
-router.get('/', (req, res)=> {
-    res.render("README \n\n Projeto com foco em cadastro e manejamento de dados perante ao conceito de receitas e ingredientes culinários, com a capacidade de criar um menu com tempo de preparo e ingredientes")
-
-
-})
+app.get('/', function (req, res) {
+    res.send("README \n\n Projeto com foco em cadastro e manejamento de dados perante ao conceito de receitas e ingredientes culinários, com a capacidade de criar um menu com tempo de preparo e ingredientes");
+  });
 
 port = process.env.PORT
 
@@ -30,4 +32,5 @@ app.listen(port, function() {
     console.log('Server is running at port ' + port)
 })
 
-module.exports = router
+
+module.exports = {app, router}

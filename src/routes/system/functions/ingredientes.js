@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
 
-const Ingrediente = require('../functions/ingredientesFunc')
+const Ingrediente = require('../functions/igFunc')
 const checkLogged = require('../middleware/checkLog').checkLogged
 const checkAdmin = require('../middleware/checkLog').checkAdmin
 

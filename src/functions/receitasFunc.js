@@ -46,7 +46,7 @@ module.exports = {
     },
     editPerName: async (nome, newRcp) => {
         if (valueException(newRcp)) {
-            await Receita.update(newRcp, {where: {nome: nome.toLowerCase()}})
+            await Receita.update(newRcp, {where: {nome: nome}})
             return true
         } else {
             return false
@@ -59,7 +59,7 @@ module.exports = {
     },
  
     deletePerName: async (nome) => {
-        await Receita.destroy({where: { nome: nome.toLowerCase()}})
+        await Receita.destroy({where: { nome: nome}})
         return true
     },
 

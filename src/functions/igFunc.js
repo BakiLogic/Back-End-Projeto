@@ -28,7 +28,7 @@ module.exports = {
     },
 
     searchName: async (nome) => {
-        const answ = await Ingrediente.findOne({where: {nome: nome.toLowerCase()}})
+        const answ = await Ingrediente.findOne({where: {nome: nome}})
         if (answ) {
             return {result: true, ingrediente: answ}
         } else {
@@ -46,7 +46,7 @@ module.exports = {
     },
     editPerName: async (nome, newIng) => {
         if (valueException(newIng)) {
-            await Ingrediente.update(newIng, {where: {nome: nome.toLowerCase()}})
+            await Ingrediente.update(newIng, {where: {nome: nome}})
             return true
         } else {
             return false
@@ -59,7 +59,7 @@ module.exports = {
     },
  
     deletePerName: async (nome) => {
-        await Ingrediente.destroy({where: { nome: nome.toLowerCase()}})
+        await Ingrediente.destroy({where: { nome: nome}})
         return true
     },
 
@@ -70,7 +70,7 @@ module.exports = {
         if (perPageException(qtt, pagina)) {
             const check = await Ingrediente.findAll({offset: pagina, limit: limite})
     
-            return {yesno: true,check}
+            return {msg: true,check}
         } else {
             return false
         }
