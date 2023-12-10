@@ -3,7 +3,7 @@ const router = express.Router()
 const jwt = require('jsonwebtoken')
 
 const Admin = require('../../../functions/userFunc')
-const {checkAdmin} = require('../middleware/checkLog')
+const {checkAdmin} = require('../../../middleware/checkLog')
 
 router.post('/admin/adicionar', checkAdmin, async (req, res) => {
    

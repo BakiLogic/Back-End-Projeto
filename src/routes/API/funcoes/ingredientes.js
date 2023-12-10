@@ -3,8 +3,8 @@ const router = express.Router()
 const jwt = require('jsonwebtoken')
 
 const Ingrediente = require('../../../functions/igFunc')
-const {checkLogged} = require('../middleware/checkLog')
-const {checkAdmin} = require('../middleware/checkLog')
+const {checkLogged} = require('../../../middleware/checkLog')
+const {checkAdmin} = require('../../../middleware/checkLog')
 
 
 

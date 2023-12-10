@@ -1,6 +1,6 @@
 const User = require('../model/receita')
-const perPageException = require('./exceptions').perPageException
-const valueException = require('./exceptions').valueException
+const {perPageException} = require('./exceptions')
+const {valueException} = require('./exceptions')
 
 
 
