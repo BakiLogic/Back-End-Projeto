@@ -77,7 +77,7 @@ module.exports = {
     },
 
     listPerCategoria: async(cat) =>{
-        const check = await Receita.findAll({offset: pagina, limit: limite})
+        const check = await Receita.findAll({where: { categoria: cat }})
         if (check){
             return {result: true,check}
         } else {

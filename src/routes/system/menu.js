@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
 const Receita = require('../functions/receitasFunc')
+const Ingrediente = require('../functions/ingredientesFunc')
 const checkLogged = require('../middleware/checkLog').checkLogged
 
 
@@ -15,7 +16,10 @@ router.post('/menu', checkLogged, async (req, res) => {
 
         if (check) {
             listaReceitas = listaReceitas + ',\n' + check.nome
-            ingredientes = ingredientes + ', \n' + check.ingrediente
+            let checkIng = await Ingrediente.findAll({where: {idReceita: check.id} })
+            if (checkIng){
+                ingredientes = ingredientes +  ' , ' + String(checkIng.nome)
+            }
             tempoTotal = tempoTotal + check.tdp
             res.json({listaReceitas, msg: ", \n ", ingredientes,msg: ", \n", tempoTotal })         
         } else {
