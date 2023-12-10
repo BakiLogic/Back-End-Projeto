@@ -68,7 +68,7 @@ module.exports = {
         pagina = (pagina - 1) * 5
 
         if (perPageException(qtt, pagina)) {
-            const check = await Receita.findAll({offset: pagina, limit: limite})
+            const check = await Receita.findAll({offset: pagina, limit: qtt})
     
             return {result: true,check}
         } else {

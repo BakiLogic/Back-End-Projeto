@@ -17,9 +17,9 @@ function perPageException (qtt, numb) {
         return false
     } else {
         if (!Number.isInteger(numb) && numb > 0) {
-            return true
-        } else {
             return false
+        } else {
+            return true
         }
     
 
