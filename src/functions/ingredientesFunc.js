@@ -1,5 +1,6 @@
 const Ingrediente = require('../model/ingrediente')
-const {exceptions} = require('./functions/exceptions')
+const perPageException = require('./functions/exceptions').perPageException
+const valueException = require('./functions/exceptions').valueException
 
 
 module.exports = {

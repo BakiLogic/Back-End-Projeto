@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config()
 const express = require("express")
 const app = express()
 const router = express.Router()
@@ -7,6 +7,12 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
 const db = require('./db/db')
+
+db.authenticate().then(() => {
+    console.log("Connected to DB")
+}).catch(err => {
+    console.log("Connection to DB failed", err)
+})
 
 app.use('/', require('./routes/login'))
 app.use('/', require('./routes/install'))
