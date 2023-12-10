@@ -17,7 +17,7 @@ router.post('/user/adicionar', checkAdmin, async (req, res) => {
     
 })
 
-router.put('user/editPerId/:id', checkAdmin, async (req, res) => {
+router.put('/user/editPerId/:id', checkAdmin, async (req, res) => {
     const check = await User.editPerName(req.params.id)
     if (check) {
         res.json({answer: "Usuário editado"})
@@ -28,7 +28,7 @@ router.put('user/editPerId/:id', checkAdmin, async (req, res) => {
 })
 
 
-router.delete('user/removePerId/:id', checkAdmin, async (req, res) => {
+router.delete('/user/removePerId/:id', checkAdmin, async (req, res) => {
     const check = await User.deletePerId(req.params.id)
 
     if (check) {
@@ -39,9 +39,9 @@ router.delete('user/removePerId/:id', checkAdmin, async (req, res) => {
  
 })
 
-router.get('user/searchPerId/:id', checkAdmin, async (req, res) => {
+router.get('/user/searchPerId/:id', checkAdmin, async (req, res) => {
     
-        const check = await User.buscarPorId(req.params.id)
+        const check = await User.searchId(req.params.id)
 
         if (check) {
             res.json({check})
@@ -51,7 +51,7 @@ router.get('user/searchPerId/:id', checkAdmin, async (req, res) => {
     
 })
 
-router.get('user/list/:qtt/:pagina', checkAdmin, async (req, res) => {
+router.get('/user/list/:qtt/:pagina', checkAdmin, async (req, res) => {
  
         let {qtt, pagina} = req.params
 

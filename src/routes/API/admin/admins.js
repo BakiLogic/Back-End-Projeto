@@ -17,7 +17,7 @@ router.post('/admin/adicionar', checkAdmin, async (req, res) => {
     
 })
 
-router.put('admin/editPerId/:id', checkAdmin, async (req, res) => {
+router.put('/admin/editPerId/:id', checkAdmin, async (req, res) => {
     const check = await Admin.editPerName(req.params.id)
     if (check) {
         res.json({answer: "Admin editado"})
@@ -28,7 +28,7 @@ router.put('admin/editPerId/:id', checkAdmin, async (req, res) => {
 })
 
 
-router.delete('admin/removePerId/:id', checkAdmin, async (req, res) => {
+router.delete('/admin/removePerId/:id', checkAdmin, async (req, res) => {
     const check = await Admin.deletePerId(req.params.id)
 
     if (check) {

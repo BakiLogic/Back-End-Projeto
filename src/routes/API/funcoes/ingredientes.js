@@ -20,7 +20,7 @@ router.post('/ingrediente/adicionar', checkLogged, async (req, res) => {
     
 })
 
-router.put('ingrediente/editPerId/:id', checkAdmin, async (req, res) => {
+router.put('/ingrediente/editPerId/:id', checkAdmin, async (req, res) => {
     const check = await Ingrediente.editPerName(req.params.id)
     if (check) {
         res.json({answer: "Ingrediente editado"})
@@ -30,7 +30,7 @@ router.put('ingrediente/editPerId/:id', checkAdmin, async (req, res) => {
 
 })
 
-router.put('ingrediente/editPerName/:nome', checkAdmin, async (req, res) => {
+router.put('/ingrediente/editPerName/:nome', checkAdmin, async (req, res) => {
     const check = await Ingrediente.editPerName(req.params.nome)
     if (check) {
         res.json({answer: "Ingrediente editado"})
@@ -40,7 +40,7 @@ router.put('ingrediente/editPerName/:nome', checkAdmin, async (req, res) => {
 
 })
 
-router.delete('ingrediente/removePerId/:id', checkAdmin, async (req, res) => {
+router.delete('/ingrediente/removePerId/:id', checkAdmin, async (req, res) => {
     const check = await Ingrediente.deletePerId(req.params.id)
 
     if (check) {
@@ -50,7 +50,7 @@ router.delete('ingrediente/removePerId/:id', checkAdmin, async (req, res) => {
     }    
  
 })
-router.delete('ingrediente/removePerName/:nome', checkAdmin, async (req, res) => {
+router.delete('/ingrediente/removePerName/:nome', checkAdmin, async (req, res) => {
 
     const check = await Ingrediente.deletePerName(req.params.nome)
 
@@ -62,9 +62,9 @@ router.delete('ingrediente/removePerName/:nome', checkAdmin, async (req, res) =>
 
 })
 
-router.get('ingrediente/searchPerId/:id', checkLogged, async (req, res) => {
+router.get('/ingrediente/searchPerId/:id', checkLogged, async (req, res) => {
     
-        const check = await Ingrediente.buscarPorId(req.params.id)
+        const check = await Ingrediente.searchId(req.params.id)
 
         if (check) {
             res.json({check})
@@ -74,9 +74,9 @@ router.get('ingrediente/searchPerId/:id', checkLogged, async (req, res) => {
     
 })
 
-router.get('ingrediente/searchPerName/:nome',checkLogged, async (req, res) => {
+router.get('/ingrediente/searchPerName/:nome',checkLogged, async (req, res) => {
     
-        const check = await Ingrediente.buscarPorNome(req.params.nome)
+        const check = await Ingrediente.searchName(req.params.nome)
 
        
         if (check) {
@@ -86,7 +86,7 @@ router.get('ingrediente/searchPerName/:nome',checkLogged, async (req, res) => {
         } 
 })
 
-router.get('ingrediente/list/:qtt/:pagina',checkLogged, async (req, res) => {
+router.get('/ingrediente/list/:qtt/:pagina',checkLogged, async (req, res) => {
  
         let {qtt, pagina} = req.params
 

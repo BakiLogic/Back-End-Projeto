@@ -19,7 +19,7 @@ router.post('/receita/adicionar', checkLogged, async (req, res) => {
     
 })
 
-router.put('receita/editPerId/:id', checkAdmin, async (req, res) => {
+router.put('/receita/editPerId/:id', checkAdmin, async (req, res) => {
     const check = await Receita.editPerName(req.params.id)
     if (check) {
         res.json({answer: "Receita editado"})
@@ -29,7 +29,7 @@ router.put('receita/editPerId/:id', checkAdmin, async (req, res) => {
 
 })
 
-router.put('ingrediente/editPerName/:nome', checkAdmin, async (req, res) => {
+router.put('/receita/editPerName/:nome', checkAdmin, async (req, res) => {
     const check = await Receita.editPerName(req.params.nome)
     if (check) {
         res.json({answer: "Receita editado"})
@@ -39,7 +39,7 @@ router.put('ingrediente/editPerName/:nome', checkAdmin, async (req, res) => {
 
 })
 
-router.delete('receita/removePerId/:id', checkAdmin, async (req, res) => {
+router.delete('/receita/removePerId/:id', checkAdmin, async (req, res) => {
     const check = await Receita.deletePerId(req.params.id)
 
     if (check) {
@@ -49,7 +49,7 @@ router.delete('receita/removePerId/:id', checkAdmin, async (req, res) => {
     }    
  
 })
-router.delete('receita/removePerName/:nome', checkAdmin, async (req, res) => {
+router.delete('/receita/removePerName/:nome', checkAdmin, async (req, res) => {
 
     const check = await Receita.deletePerName(req.params.nome)
 
@@ -61,9 +61,9 @@ router.delete('receita/removePerName/:nome', checkAdmin, async (req, res) => {
 
 })
 
-router.get('receita/searchPerId/:id',checkLogged, async (req, res) => {
+router.get('/receita/searchPerId/:id',checkLogged, async (req, res) => {
     
-        const check = await Receita.buscarPorId(req.params.id)
+        const check = await Receita.searchId(req.params.id)
 
         if (check) {
             res.json({check})
@@ -73,9 +73,9 @@ router.get('receita/searchPerId/:id',checkLogged, async (req, res) => {
     
 })
 
-router.get('receita/searchPerName/:nome',checkLogged, async (req, res) => {
+router.get('/receita/searchPerName/:nome',checkLogged, async (req, res) => {
     
-        const check = await Receita.buscarPorNome(req.params.nome)
+        const check = await Receita.searchName(req.params.nome)
 
        
         if (check) {
@@ -85,7 +85,7 @@ router.get('receita/searchPerName/:nome',checkLogged, async (req, res) => {
         } 
 })
 
-router.get('receita/listPerCategoria/:cat',checkLogged, async (req, res) => {
+router.get('/receita/listPerCategoria/:cat',checkLogged, async (req, res) => {
     
     const check = await Receita.listCat(req.params.cat)
 
@@ -97,7 +97,7 @@ router.get('receita/listPerCategoria/:cat',checkLogged, async (req, res) => {
     } 
 })
 
-router.get('receita/list/:qtt/:pagina',checkLogged, async (req, res) => {
+router.get('/receita/list/:qtt/:pagina',checkLogged, async (req, res) => {
  
         let {qtt, pagina} = req.params
 
