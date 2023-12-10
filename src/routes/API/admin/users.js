@@ -55,7 +55,7 @@ router.get('user/list/:qtt/:pagina', checkAdmin, async (req, res) => {
  
         let {qtt, pagina} = req.params
 
-        const lista = await User.listLimited(qtt, pagina)
+        const lista = await User.listlimited(qtt, pagina)
 
         if (lista) {
             res.json(lista)

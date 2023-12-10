@@ -101,7 +101,7 @@ router.get('receita/list/:qtt/:pagina',checkLogged, async (req, res) => {
  
         let {qtt, pagina} = req.params
 
-        const lista = await Receita.listLimited(qtt, pagina)
+        const lista = await Receita.listlimited(qtt, pagina)
 
         if (lista) {
             res.json(lista)

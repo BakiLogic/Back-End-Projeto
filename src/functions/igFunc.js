@@ -9,7 +9,7 @@ module.exports = {
         if (answ){
             return false
         } else {
-        if (valueException(info).status) {
+        if (valueException(info)) {
                 await Ingrediente.create(info)
             return true
         } else {

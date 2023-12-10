@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken')
 
-let checkLogged = (req, res) =>{
-    let token = req.header.authorization
+let checkLogged = (req, res, next) =>{
+    let token = req.headers.authorization
     if (token) {
-        jwt.verify(token, 'SHHHHH', (err) => {
+        jwt.verify(token, 'secret', (err) => {
             if (err) {
                 return res.status(401).json({error: 'token incorreto' })
             }
@@ -14,7 +14,7 @@ let checkLogged = (req, res) =>{
     }
 }
 
-let checkAdmin = (req, res) => {
+let checkAdmin = (req, res, next) => {
     let token = req.headers.authorization
     
     jwt.verify(token, 'secret', (err, decoded) => {

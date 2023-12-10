@@ -90,7 +90,7 @@ router.get('ingrediente/list/:qtt/:pagina',checkLogged, async (req, res) => {
  
         let {qtt, pagina} = req.params
 
-        const lista = await Ingrediente.listLimited(qtt, pagina)
+        const lista = await Ingrediente.listlimited(qtt, pagina)
 
         if (lista) {
             res.json(lista)
