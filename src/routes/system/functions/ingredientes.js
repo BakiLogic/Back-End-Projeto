@@ -3,7 +3,8 @@ const router = express.Router()
 const jwt = require('jsonwebtoken')
 
 const Ingrediente = require('../functions/ingredientesFunc')
-const checkLogged = require('../middleware/checkLog')
+const checkLogged = require('../middleware/checkLog').checkLogged
+const checkAdmin = require('../middleware/checkLog').checkAdmin
 
 router.post('/ingrediente/adicionar', checkLogged, async (req, res) => {
    

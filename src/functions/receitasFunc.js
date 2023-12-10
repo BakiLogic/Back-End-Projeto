@@ -8,7 +8,7 @@ module.exports = {
         if (answ){
             return false
         } else {
-        if (valueException(info).status) {
+        if (valueException(info)) {
                 await Receita.create(info)
             return true
         } else {
