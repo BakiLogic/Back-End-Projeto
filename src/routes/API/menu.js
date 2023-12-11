@@ -1,30 +1,59 @@
 const express = require('express')
 const router = express.Router()
 const Receita = require('../../functions/receitasFunc')
-const ingredienteList = require('../../model/ingrediente')
+const ingredientes = require('../../model/ingrediente')
 
 const {checkLogged} = require('../../middleware/checkLog')
-
-
-router.get('/menu/:id', checkLogged, async (req, res) => {
-   
-   
-        let listaReceitas
-        let tempoTotal
-        let check = await Receita.searchId(req.params.id)
-
-        if (check) {
-           listaReceitas = listaReceitas + ',\n' + check.nome
-            let ingredientes = await ingredienteList.findAll({where: {idReceita: check.id} })
-            tempoTotal = tempoTotal + check.tdp
-           res.json({listaReceitas, msg: ", \n ", ingredientes, msg: ", \n", tempoTotal })         
-        } else {
-        res.json({msg: "não encontrado"})
+let listaReceitas = ''
+let ingredienteList = ''
+let ingredienteVolume = 0
+let tempoTotal = 0
+router.get('/menu/:id', checkLogged, async (req, res) => { 
         
-      } 
+       let check = (await Receita.searchId(req.params.id)).receita           
+       if (check) {
+        let estado = true
+        let c = 0
+        let a = 0
+        
+        listaReceitas = listaReceitas + check.nome + ', ' 
+        let ingredienteCheck = await ingredientes.findAll({where: {idReceita: check.id} })
+        do
+            if (ingredienteCheck[c] != null){
+                ingredienteList = ingredienteList + ingredienteCheck[c].nome + ', '
+                c++
+            } else {
+                estado = false
+            }
+        while(estado)
+        estado = true
+        do
+            if (ingredienteCheck[a] != null){
+                ingredienteVolume = ingredienteVolume + ingredienteCheck[a].volume
+                a++
+            } else {
+                estado = false
+            }
+        while(estado)
 
-    
+        tempoTotal = tempoTotal + parseInt(check.tdp)
+       
+           res.json({listaReceitas, tempoTotal, ingredienteList, ingredienteVolume })         
+        } else {
+            
+        res.json({check})
+        
+     } 
+ 
 
+})
+
+router.get('/menureset', checkLogged, (req, res) => { 
+    listaReceitas = ''
+    ingredienteList = ''
+    ingredienteVolume = 0
+    tempoTotal = 0
+    res.json({mgs: "resetado"})
 })
 
 
