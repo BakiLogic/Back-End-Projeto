@@ -4,12 +4,13 @@ const Receita = require('../../functions/receitasFunc')
 const ingredientes = require('../../model/ingrediente')
 
 const {checkLogged} = require('../../middleware/checkLog')
+const {numberException} = require('../../functions/exceptions')
 let listaReceitas = ''
 let ingredienteList = ''
 let ingredienteVolume = 0
 let tempoTotal = 0
 router.get('/menu/:id', checkLogged, async (req, res) => { 
-        
+    if(numberException(parseInt(req.params.id))){
        let check = (await Receita.searchId(req.params.id)).receita           
        if (check) {
         let estado = true
@@ -41,10 +42,12 @@ router.get('/menu/:id', checkLogged, async (req, res) => {
            res.json({listaReceitas, tempoTotal, ingredienteList, ingredienteVolume })         
         } else {
             
-        res.json({check})
+        res.json({msg:"valor indisponível"})
         
      } 
- 
+    } else {
+        res.json({msg: "id tem que ser um número"})
+    }
 
 })
 
