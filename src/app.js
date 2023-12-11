@@ -36,5 +36,10 @@ app.listen(port, function() {
     console.log('Server is running at port ' + port)
 })
 
+const swaggerInterface = require('swagger-ui-express')
+const swaggerArquivo = require('./swagger-doc.json')
+
+app.use('/docs', swaggerInterface.serve, swaggerInterface.setup(swaggerArquivo))
+
 
 module.exports = {app, router}
